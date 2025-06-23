@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AccesoComponent } from './acceso.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 describe('AccesoComponent', () => {
   let component: AccesoComponent;
@@ -8,8 +9,13 @@ describe('AccesoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AccesoComponent],
-      imports: [ReactiveFormsModule]
+      
+      imports: [
+        AccesoComponent,
+        ReactiveFormsModule,
+        FormsModule,
+        CommonModule
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AccesoComponent);
@@ -30,7 +36,7 @@ describe('AccesoComponent', () => {
       password: 'Password1',
       repetirPassword: 'Password1',
     });
-    expect(component.accesoForm.valid).toBeTruthy();
+    expect(component.accesoForm.valid).toBeTrue();
 
     component.limpiarFormulario();
     expect(component.accesoForm.get('nombre')?.value).toBeNull();
