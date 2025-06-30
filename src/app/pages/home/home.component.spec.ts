@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
+import { By } from '@angular/platform-browser';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -19,5 +20,14 @@ describe('HomeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  // Nueva prueba unitaria para verificar la presencia de app-carousel desde el css al html
+  it('should display the app-carousel component', () => {
+    // Busca el elemento <app-carousel> en el DOM del componente
+    const carouselElement = fixture.debugElement.query(By.css('app-carousel'));
+
+    // Espera que el elemento del carrusel exista
+    expect(carouselElement).toBeTruthy();
   });
 });
